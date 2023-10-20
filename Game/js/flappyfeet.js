@@ -42,6 +42,31 @@ function updateJoystick() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const ctx = canvas.getContext('2d');
+		
+		const rect = flappyCanvas.getBoundingClientRect();
+
+		// Create a new transparent canvas
+		const overlayCanvas = document.createElement('canvas');
+		overlayCanvas.width = flappyCanvas.width;
+		overlayCanvas.height = flappyCanvas.height;
+
+		// Set styles to position the new canvas directly on top of the existing one
+		overlayCanvas.style.position = 'absolute';
+		overlayCanvas.style.top = rect.top + 'px';
+		overlayCanvas.style.left = rect.left + 'px';
+		overlayCanvas.style.pointerEvents = 'none';  // To allow clicks to pass through to the underlying canvas		
+		overlayCanvas.style.background="transparent";
+
+		// Append the new canvas to the body
+		document.body.appendChild(overlayCanvas);
+
+		// Get the context and optionally draw or cl
+		
+						
+		var myConfetti = confetti.create(overlayCanvas, {
+		  resize: true,			
+		  useWorker: true
+		});
 
     let bird = {
         x: canvas.width / 5,
@@ -132,7 +157,18 @@ function updateJoystick() {
         
         if (pipes[0] && pipes[0].x < bird.x && !pipes[0].counted) {
             pipes[0].counted=true;
-            score++;
+					
+					score++;
+					
+					if(score % 5 == 0){																
+						myConfetti({
+						  particleCount: 100,
+						  spread: 160,						
+							colors: ['#ff0000', '#ffffff', '#000000'], //, 'white', 'black'],																  
+						});
+					}
+					
+          
         }
 
         if (pipes[0] && pipes[0].x <= -pipeWidth) {
@@ -200,8 +236,6 @@ function updateJoystick() {
             bird.y = canvas.height-bird.size*1.1;
         }
 				
-				console.log(bird.y);
-
         drawPipes();
         movePipes();
         drawBird();
