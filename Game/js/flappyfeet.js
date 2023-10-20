@@ -160,6 +160,11 @@ function updateJoystick() {
 					
 					score++;
 					
+					document.getElementById("score").classList.add("pop-animation");
+					setTimeout(() => {
+						document.getElementById("score").classList.remove("pop-animation");	
+					}, 400);
+					
 					if(score % 5 == 0){																
 						myConfetti({
 						  particleCount: 100,
