@@ -42,3 +42,16 @@ The microcontroller expects a 0-5vdc input on P2, which can be accomplished via 
 
 ### Game Software
 The game software is a lightweight version of "Flappy Birds" produced largely by [ChatGPT](https://chat.openai.com/).  It's written in HTML/CSS/JavaScript.  It is designed to accept input from a joystick, moving the "bird" to an absolute position based on the Y axis reading from the jotstick (-1 = top, 0 = center, 1 = bottom)
+
+```
+window.addEventListener("gamepadconnected", function(e) {
+    console.log("Gamepad connected!", e.gamepad);    
+});
+```
+To access the position:
+```
+    var gamepadList = navigator.getGamepads();
+    if (gamepadList[0]) {			        
+        var yPosition = gamepadList[0].axes[1];
+    }
+```
