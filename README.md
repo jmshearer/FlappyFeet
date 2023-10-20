@@ -1,5 +1,5 @@
 # FlappyFeet
-FlappyFeet game using a laser time-of-flight sensor for our 2023 Trunk-Or-Treat.
+FlappyFeet game using a laser time-of-flight sensor for the 2023 [Annville Church of the Brethren](https://www.annvillecob.org) Trunk-Or-Treat.
 
 
 ## Game Software
