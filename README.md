@@ -50,8 +50,8 @@ window.addEventListener("gamepadconnected", function(e) {
 ```
 To access the position:
 ```
-    var gamepadList = navigator.getGamepads();
-    if (gamepadList[0]) {			        
-        var yPosition = gamepadList[0].axes[1];
-    }
+var gamepadList = navigator.getGamepads();
+if (gamepadList[0]) {			        
+    var yPosition = gamepadList[0].axes[1];
+}
 ```
