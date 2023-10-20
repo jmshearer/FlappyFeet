@@ -12,3 +12,11 @@ The Digispark ATTINY85 controller acts as a joystick HID.  The task is pretty si
 - [Banner LTF12IC2LDQ Time-Of-Flight Laser Sensor](https://www.bannerengineering.com/us/en/products/part.94849.html) - This is overkill for this project but I had several on-hand.  The salient information is that it provides a 12V 4ma-20ma output that is proportional to the detected distance.  Adding a 250 ohm resistor converts this to a 0-5vdc output that can be fed into the ADC of a microcontroller.  Note that there would be a number of other sensors that can do this (ultrasonic, time-of-flight, radar)--the important point is to just get a 0-5vdc output that is linearly correlated to distance.
 - [Digispark ATTINY85 USB Development Board](http://digistump.com/products/1) - A great little microcontroller: cheap, has an analog input, programmable with the Arduino IDE, has lots of demos, and can act as a HID like a JoyStick with minimal programming.
 - [Pololu 5V Step-Up Voltage Regulator](https://www.pololu.com/product/2562) - Steps the 5VDC from the USB bus up to 12VDC for use by the time-of-flight sensor.
+
+The parts are assembled as follows:
+
+![Joystick / LTOF Interface](Documentation/LTOF%20Joystick%20Interface.jpg)
+
+...and can even be contained entirely on the DigiSpark.  Note that the reistor in my circuit is 240Ω instead of 250Ω--it's what I had on hand and cleaner than the four 1K's in parallel on the prototype.
+
+![Assembled PCB](Documentation/Assembled%20PCB.jpg)
