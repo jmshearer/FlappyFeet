@@ -55,3 +55,6 @@ if (gamepadList[0]) {
     var yPosition = gamepadList[0].axes[1];
 }
 ```
+
+## References
+- [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)
