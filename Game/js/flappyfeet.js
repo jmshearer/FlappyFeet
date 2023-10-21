@@ -24,7 +24,7 @@ const easterEgg = new Konami(function(){
 						  spread: 300,						
 							colors: ['#ff0000', '#ffffff', '#000000'], //, 'white', 'black'],																  
 						});
-    neverDie=true;
+    neverDie=!neverDie;
 });
 
 var curDifficulty=1;
