@@ -1,6 +1,8 @@
 
 curJoyY = 0.0;
 
+speed = 2;
+
 window.addEventListener("gamepadconnected", function(e) {
     console.log("Gamepad connected!", e.gamepad);
     // Start checking the joystick position
@@ -14,6 +16,54 @@ window.addEventListener("gamepaddisconnected", function(e) {
 gamepadPresent=false;
 inhibitUpdates=false;
 
+var curDifficulty=1;
+
+function changeDifficulty(harder){
+    if(harder){
+        curDifficulty++;
+    }else {
+        curDifficulty--;
+    }
+    if(curDifficulty<1)
+        curDifficulty=1;
+    if(curDifficulty>5)
+        curDifficulty=5;
+    difficulty(curDifficulty);
+}
+
+function difficulty(requestedDifficulty){
+    curDifficulty=requestedDifficulty;     
+    gapHeight=300;  
+    speed=2;
+    pipeGap=640;
+     
+    switch(curDifficulty){
+        case 1:
+            break;
+        case 2:
+            pipeGap=320;
+            break;
+        case 3:
+            speed=4;
+            pipeGap=320;
+            break;
+        case 4:
+            speed=6;
+            pipeGap=320;
+            break;
+        case 5:
+            speed=6;
+            pipeGap=320;
+            gapHeight=200;
+            break;
+        
+    }
+    
+    updateInfo();
+}
+
+
+
 function updateJoystick() {
     var gamepadList = navigator.getGamepads();
 
@@ -21,6 +71,7 @@ function updateJoystick() {
         // Assuming the first gamepad is the one you're interested in.
         // Axis 1 is typically the y-position of the left thumbstick
         var yPosition = gamepadList[0].axes[1];
+        
         curJoyY = yPosition;
         const canvas = document.getElementById('flappyCanvas');
 				gamepadPresent=true;
@@ -79,9 +130,10 @@ function updateJoystick() {
 
     let pipes = [];
     let score = 0;
+    let pipesPassed=0;
     const pipeWidth = 75;
-    const gapHeight = 300;
-    let pipeGap = 320;  // You can adjust this value for the desired gap between pipes.
+    let gapHeight = 300;
+    let pipeGap = 640;  // You can adjust this value for the desired gap between pipes.
 		
 		const sprite = new Image();
 		sprite.src = "assets/sprites.png";
@@ -149,23 +201,30 @@ function updateJoystick() {
 
         });
     }
+    
+    function updateInfo(){
+        document.getElementById("info").innerHTML ="Difficulty: " + curDifficulty + "<br />FlappyFeet<br />github.com/jmshearer/FlappyFeet";
+    }
+    
+    updateInfo();
 
     function movePipes() {
         pipes.forEach(pipe => {
-            pipe.x -= 2;
+            pipe.x -= speed;
         });
         
         if (pipes[0] && pipes[0].x < bird.x && !pipes[0].counted) {
             pipes[0].counted=true;
 					
-					score++;
+                    pipesPassed++;
+					score += curDifficulty;
 					
 					document.getElementById("score").classList.add("pop-animation");
 					setTimeout(() => {
 						document.getElementById("score").classList.remove("pop-animation");	
 					}, 400);
 					
-					if(score % 5 == 0){																
+					if(pipesPassed % 5 == 0){																
 						myConfetti({
 						  particleCount: 100,
 						  spread: 160,						
@@ -221,6 +280,7 @@ function updateJoystick() {
         bird.y = canvas.height / 2;
         pipes = [];
         score = 0;
+        difficulty(1);
     }
 
     function update() {
