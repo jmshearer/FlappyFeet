@@ -16,6 +16,17 @@ window.addEventListener("gamepaddisconnected", function(e) {
 gamepadPresent=false;
 inhibitUpdates=false;
 
+neverDie=false;
+
+const easterEgg = new Konami(function(){
+    	myConfetti({
+						  particleCount: 260,
+						  spread: 300,						
+							colors: ['#ff0000', '#ffffff', '#000000'], //, 'white', 'black'],																  
+						});
+    neverDie=true;
+});
+
 var curDifficulty=1;
 
 function changeDifficulty(harder){
@@ -125,7 +136,7 @@ function updateJoystick() {
         size: 40,
         dx: 0,
         dy: 0,
-        speed: 4
+        speed: 8
     };
 
     let pipes = [];
@@ -261,12 +272,14 @@ function updateJoystick() {
     }
 		
 		function gameOver(){
-			flashScreen();
-			inhibitUpdates=true;
-			setTimeout(function(){
-				inhibitUpdates=false;			
-      	resetGame();
-			},2000);
+            if(!neverDie){
+    			flashScreen();
+    			inhibitUpdates=true;
+    			setTimeout(function(){
+    				inhibitUpdates=false;			
+          	         resetGame();
+    			},2000);
+            }
 		}
 
     function flashScreen() {
