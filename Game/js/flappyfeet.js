@@ -2,18 +2,35 @@
  * FlappyFeet - Flappy Birds-style game
  * Partially written by ChatGPT
  * Constructed by the Shearers
+ * 
+ * https://github.com/jmshearer/FlappyFeet
+ *
+ * ?? A NOTE ON THE CODE ??
+ * This project is the brainchild of a late night, copious amounts of caffeine,
+ * and the ingenious contributions of my young apprentices (a.k.a. my kids).
+ * If some parts (aka "all") look like 1980's-era poorly-planned spaghetti code, 
+ * well...you're not entirely wrong.  If you're here to judge my professional
+ * coding prowess, please divert your attention elsewhere. This is family fun
+ * gone rogue.
+ * 
+ * PS: Thanks to ChatGPT for being our partner in code-crime and for the
+ * contributors listed in the github repo for their unwitting contributions
+ * to a fun trunk-or-treat project.
  * ***************************************************************************/
  
 //General state variables
-var curJoyY = 0.0;
-var speed = 2;
-var gamepadPresent = false;
-var inhibitUpdates = false;
-var neverDie = false;
-var curDifficulty = 1;
-const pipeWidth = 75;
-var gapHeight = 300;
-var pipeGap = 640;
+var curJoyY = 0.0;							// Starting position
+var gamepadPresent = false;			// Automatically set if/when a gamepad (joystick) is detected
+var inhibitUpdates = false;			// Preven the screen from updating
+var neverDie = false;						// Never let the flappy feet die!  (See Knoami code)
+
+//Difficulty levels & tuning parameters
+var yEndIgnore = .90;						// Ignore y values > this amount...helpful for preventing the laser from jumping when it misses the target
+var speed = 2;									// Game speed
+var curDifficulty = 1;					// Current difficulty level
+const pipeWidth = 75;						// Width of a pipe
+var gapHeight = 300;						// Height of a gap
+var pipeGap = 640;							// Distance between pipes
 
 
 //Difficulty handling routines (override game modes)
@@ -78,8 +95,6 @@ const easterEgg = new Konami(function() {
     neverDie = !neverDie;
 });
 
-
-
 function updateJoystick() {
     var gamepadList = navigator.getGamepads();
 
@@ -87,7 +102,7 @@ function updateJoystick() {
         var yPosition = gamepadList[0].axes[1]; //Axes[1] is generally the y axis
 
        
-        if(yPosition<.90){
+        if(yPosition<yEndIgnore){
          console.log(yPosition);
             curJoyY = yPosition;
         }

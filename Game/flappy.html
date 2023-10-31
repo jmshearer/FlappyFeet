@@ -35,10 +35,11 @@
             right: 0;
             left: 0;
             padding: 1em;
+            user-select: none;
         }
         
         #toolbar div {
-            display: inline-block;
+            display: inline-block;						            
         }
         
         #toolbar #info {
@@ -54,6 +55,18 @@
 						    -1px  1px 0 #000,
 						    -1px  0   0 #000;
         }
+        
+        .clickable {
+					cursor: pointer;										
+				}
+				
+				.clickable:hover {
+					color: lightgray;
+				}
+				
+				.clickable:active {
+					color: gray;
+				}
         
         canvas {
             background: #eee;
@@ -92,9 +105,10 @@
 <div id="emitter"></div>
 <div id="score">Testing</div>
 <div id="toolbar">
-  <div id="difficultyMinus" onclick="changeDifficulty(false);">-</div>
-  <div id="difficultyPlus" onclick="changeDifficulty(true);">+</div>
+  <div id="difficultyMinus" class="clickable" onclick="changeDifficulty(false);">-</div>
+  <div id="difficultyPlus" class="clickable" onclick="changeDifficulty(true);">+</div>  
   <div id="info"></div>
+  <div style="float: right;"><img src="assets/qr.png" height="100"></div>
 </div>
 
 <canvas id="flappyCanvas"></canvas>
