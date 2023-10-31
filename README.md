@@ -57,6 +57,7 @@ if (gamepadList[0]) {
 ```
 
 ## References
+Refer to [NOTICES.md](NOTICES.md) for all 3rd party licenses.  Some notable sources for this project:
 - [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)
 - [Konami.js](https://konamijs.mand.is/)
 - [Flappy Feet Sprite](https://www.spriters-resource.com/fullview/59894/)
