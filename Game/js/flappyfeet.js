@@ -78,13 +78,20 @@ const easterEgg = new Konami(function() {
     neverDie = !neverDie;
 });
 
+
+
 function updateJoystick() {
     var gamepadList = navigator.getGamepads();
 
     if (gamepadList[0]) {
         var yPosition = gamepadList[0].axes[1]; //Axes[1] is generally the y axis
 
-        curJoyY = yPosition;
+       
+        if(yPosition<.90){
+         console.log(yPosition);
+            curJoyY = yPosition;
+        }
+        
         const canvas = document.getElementById('flappyCanvas');
         gamepadPresent = true;
     } else {
