@@ -59,3 +59,4 @@ if (gamepadList[0]) {
 ## References
 - [Canvas Confetti](https://www.npmjs.com/package/canvas-confetti)
 - [Konami.js](https://konamijs.mand.is/)
+- [Flappy Feet Sprite](https://www.spriters-resource.com/fullview/59894/)
