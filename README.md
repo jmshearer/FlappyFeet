@@ -1,6 +1,9 @@
 # FlappyFeet
 FlappyFeet game using a laser time-of-flight sensor for the 2023 [Annville Church of the Brethren](https://www.annvillecob.org) Trunk-Or-Treat.
+
 ![Trunk-Or-Treat](Documentation/Trunk-Or-Treat%20Photo.jpg)
+
+Players run forward to move the shoe ("flappy foot") up and backwards to move the shoe down.  Five difficulty levels increase pipe positioning and speed.  The game can also be used without a laser sensor using a joystick or just a keyboard.
 
 ## Run it yourself
 1) Clone the repo
