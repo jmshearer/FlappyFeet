@@ -1,5 +1,5 @@
 # FlappyFeet
-FlappyFeet game using a laser time-of-flight sensor for the 2023 [Annville Church of the Brethren](https://www.annvillecob.org) Trunk-Or-Treat.
+FlappyFeet game using a laser time-of-flight sensor for the 2023 [Annville Church of the Brethren](https://www.annvillecob.org) Trunk-Or-Treat and using an ultrasonic sensor for the 2024 Trunk-Or-Treat [FlappyPotter](#flappypotter)
 
 ![Trunk-Or-Treat](Documentation/Trunk-Or-Treat%20Photo.jpg)
 
@@ -74,7 +74,9 @@ if (gamepadList[0]) {
 ## Forks
 
 ### FlappyPotter
-With relatively little modification, I created a "Harry Potter" themed version that used the JSN SR04T sensor to detect the height of a pivoting broom, allowing the "rider" to control the height of a flying Harry Potter by "flying" a broom.  In this implementaiton, Harry flew between bludgers instead of the columns.  The implementation was a pretty straightforward modification of the original FlappyFeet software.  Because of concerns of intellectual property, this fork is not publically available.  On the other hand, it's a great exercise for the reader!
+With relatively little modification, I created a "Harry Potter" themed version for our 2024 Trunk-Or-Treat that uses the JSN SR04T sensor to detect the height of a pivoting broom, allowing the "rider" to control the height of a flying Harry Potter by "flying" a broom.  In this implementaiton, Harry flew between bludgers instead of the columns.  The implementation was a pretty straightforward modification of the original FlappyFeet software.  Because of concerns of intellectual property, this fork is not publically available.  On the other hand, it's a great exercise for the reader!
+
+![Trunk-Or-Treat](Documentation/FlappyPotter.jpg)
 
 ## References
 Refer to [NOTICES.md](NOTICES.md) for all 3rd party licenses.  Some notable sources for this project:
